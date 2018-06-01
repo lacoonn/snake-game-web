@@ -10,6 +10,24 @@
 		body {
 			text-align: center;
 		}
+
+		table {
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		td {
+			height: 50px;
+			width: 100px;
+		}
+
+		.save {
+			display: inline-block;
+			position: relative;
+			height: 50px;
+			width: 100px;
+			text-align: center;
+		}
 	</style>
 	<script>
 		function GetCookie(name) {
@@ -35,17 +53,37 @@
 	<form>
 		<h3>최고 기록</h3>
 		<br>
-		<span id="best">Game Score</span>
+		<table>
+			<tr>
+				<td>
+					<span id="best-name">최고득점자</span>
+				</td>
+				<td>
+					<span id="best-score">최고점수</span>
+				</td>
+			</tr>
+		</table>
 		<br>
 		<h3>내 기록</h3>
 		<br>
-		<input id="current-name" type="text" size="15" value=""> : <span id="current-score"></span>
+		<table>
+			<tr>
+				<td>
+					<input id="current-name" type="text" size="15" value="">
+				</td>
+				<td>
+					<span id="current-score"></span>
+				</td>
+			</tr>
+		</table>
+
 		<br>
 		<br>
-		<button style="display: inline-block; position: relative; left: 200px;" type="button" onclick="save()">저장</button>
+		<button class="save" type="button" onclick="save()">저장</button>
 	</form>
 	<script>
-		var doc_best = document.getElementById("best");
+		var doc_best_name = document.getElementById("best-name");
+		var doc_best_score = document.getElementById("best-score");
 		var doc_current_score = document.getElementById("current-score");
 		// 현재 시간
 		var expire = new Date();
@@ -54,10 +92,12 @@
 		var best_name = GetCookie("best-name");
 		var best_score = GetCookie("best-score");
 		if (best_name == null) {
-			doc_best.innerHTML = "없음";
+			doc_best_name.innerHTML = "없음";
+			doc_best_score.innerHTML = "없음";
 		}
 		else {
-			doc_best.innerHTML = best_name + "   " + best_score;
+			doc_best_name.innerHTML = best_name;
+			doc_best_score.innerHTML = best_score;
 		}
 
 		var current_score = GetCookie("current-score");

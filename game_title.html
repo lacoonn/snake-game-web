@@ -10,6 +10,21 @@
 		body {
 			text-align: center;
 		}
+
+		table {
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		td {
+			height: 50px;
+			width: 100px;
+		}
+
+		.game-start {
+			height: 50px;
+			width: 100px;
+		}
 	</style>
 	<script>
 		function GetCookie(name) {
@@ -31,19 +46,35 @@
 </head>
 
 <body>
+	<img src="image/snake_game.png">
 	<h1>SNAKE GAME</h1>
-	<h3 id="score">Game Score</h3>
-	<button type="button" onclick="location.href='game_board.html'">Start Game</button>
+	<h3>최고 기록</h3>
+	<table>
+		<tr>
+			<td>
+				<span id="best-name">Game Score</span>
+
+			</td>
+			<td>
+				<span id="best-score">Game Score</span>
+			</td>
+		</tr>
+	</table>
+	<br>
+	<button class="game-start" type="button" onclick="location.href='game_board.html'">Start Game</button>
 	<script>
-		var doc_score = document.getElementById("score");
+		var doc_name = document.getElementById("best-name");
+		var doc_score = document.getElementById("best-score");
 		var username = GetCookie("best-name");
 		var count = GetCookie("best-score");
 		var expire = new Date(); // 현재 시간
 		if (username == null) {
-			doc_score.innerHTML = "최고 기록 : 없음";
+			doc_name.innerHTML = "없음";
+			doc_score.innerHTML = "없음";
 		}
 		else {
-			doc_score.innerHTML = "최고 기록 : " + username + "   " + count;
+			doc_name.innerHTML = username;
+			doc_score.innerHTML = count;
 		}
 	</script>
 </body>
