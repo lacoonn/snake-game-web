@@ -210,6 +210,7 @@
 			var gameover = true;        // Game is over
 			var gameovertime = 1;       // How long we have been game over
 			var gameoverdelay = 0.5;    // Waiting time after game over
+			var finished = false;
 
 			// Initialize the game
 			function init() {
@@ -416,7 +417,7 @@
 						expire.setTime(expire.getTime() + (365 * 24 * 3600 * 1000));
 						//SetCookie("current-name", username, expire);
 						SetCookie("current-score", score, expire);
-						window.location.href='game_score.html';
+						finished = true;
 					}
 				}
 			}
@@ -431,8 +432,16 @@
 				drawSnake();
 				drawScore();
 
+				if (finished) {
+					context.fillStyle = "rgba(0, 0, 0, 0.5)";
+					context.fillRect(0, 0, canvas.width, canvas.height);
+
+					context.fillStyle = "#ffffff";
+					context.font = "24px Verdana";
+					drawCenterText("Game Over", 0, canvas.height / 2, canvas.width);
+				}
 				// Game over
-				if (gameover) {
+				else if (gameover) {
 					context.fillStyle = "rgba(0, 0, 0, 0.5)";
 					context.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -591,7 +600,10 @@
 
 			// Keyboard event handler
 			function onKeyDown(e) {
-				if (gameover) {
+				if (finished) {
+					window.location.href = 'game_score.html';
+				}
+				else if (gameover) {
 					tryNewGame();
 				} else {
 					if (e.keyCode == 37 || e.keyCode == 65) {
