@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Game Title</title>
+	<style>
+		body {
+			text-align: center;
+		}
+	</style>
+	<script>
+		function GetCookie(name) {
+			var pairs = document.cookie.split(";"); // 쿠키문자열을 ;을 경계로 분할
+			for (var i = 0; i < pairs.length; i++) {
+				var pair = pairs[i].trim(); // 쿠키 앞뒤의 빈칸 제거
+				var unit = pair.split("=");
+				if (unit[0] == name)
+					return unescape(unit[1]);
+			}
+			return null;
+		}
+		function SetCookie(name, value, expireDate) {
+			var cookieStr = name + "=" + escape(value) +
+				((expireDate == null) ? "" : ("; expires=" + expireDate.toGMTString()));
+			document.cookie = cookieStr;
+		}
+	</script>
+</head>
+
+<body>
+	<h1>SNAKE GAME</h1>
+	<h3 id="score">Game Score</h3>
+	<button type="button" onclick="location.href='game_board.html'">Start Game</button>
+	<script>
+		var doc_score = document.getElementById("score");
+		var username = GetCookie("best-name");
+		var count = GetCookie("best-score");
+		var expire = new Date(); // 현재 시간
+		if (username == null) {
+			doc_score.innerHTML = "최고 기록 : 없음";
+		}
+		else {
+			doc_score.innerHTML = "최고 기록 : " + username + "   " + count;
+		}
+	</script>
+</body>
+
+</html>

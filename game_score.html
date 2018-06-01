@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<style>
+		body {
+			text-align: center;
+		}
+	</style>
+	<script>
+		function GetCookie(name) {
+			var pairs = document.cookie.split(";"); // 쿠키문자열을 ;을 경계로 분할
+			for (var i = 0; i < pairs.length; i++) {
+				var pair = pairs[i].trim(); // 쿠키 앞뒤의 빈칸 제거
+				var unit = pair.split("=");
+				if (unit[0] == name)
+					return unescape(unit[1]);
+			}
+			return null;
+		}
+		function SetCookie(name, value, expireDate) {
+			var cookieStr = name + "=" + escape(value) +
+				((expireDate == null) ? "" : ("; expires=" + expireDate.toGMTString()));
+			document.cookie = cookieStr;
+		}
+	</script>
+
+</head>
+
+<body>
+	<form>
+		<h3>최고 기록</h3>
+		<br>
+		<span id="best">Game Score</span>
+		<br>
+		<h3>내 기록</h3>
+		<br>
+		<input id="current-name" type="text" size="15" value=""> : <span id="current-score"></span>
+		<br>
+		<br>
+		<button style="display: inline-block; position: relative; left: 200px;" type="button" onclick="save()">저장</button>
+	</form>
+	<script>
+		var doc_best = document.getElementById("best");
+		var doc_current_score = document.getElementById("current-score");
+		// 현재 시간
+		var expire = new Date();
+		expire.setTime(expire.getTime() + (365 * 24 * 3600 * 1000));
+
+		var best_name = GetCookie("best-name");
+		var best_score = GetCookie("best-score");
+		if (best_name == null) {
+			doc_best.innerHTML = "없음";
+		}
+		else {
+			doc_best.innerHTML = best_name + "   " + best_score;
+		}
+
+		var current_score = GetCookie("current-score");
+		if (current_score == null) {
+			doc_current_score.innerHTML = "ERROR";
+		}
+		else {
+			doc_current_score.innerHTML = current_score;
+		}
+
+		function save() {
+			var current_name = document.getElementById("current-name").value;
+			if (best_name == null) {
+				SetCookie("best-name", current_name, expire);
+				SetCookie("best-score", current_score, expire);
+			}
+			else if (parseInt(current_score) > parseInt(best_score)) {
+				SetCookie("best-name", current_name, expire);
+				SetCookie("best-score", current_score, expire);
+			}
+			window.location.href = 'game_title.html';
+		}
+	</script>
+</body>
+
+</html>
