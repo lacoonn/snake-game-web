@@ -13,8 +13,12 @@
 		}
 
 		table {
+			width: 50%;
 			margin-left: auto;
 			margin-right: auto;
+			border-width: 1px;
+			border-color: black;
+			border-style: solid;
 		}
 
 		td {
@@ -51,6 +55,7 @@
 </head>
 
 <body>
+	<br><br>
 	<form>
 		<h3>최고 기록</h3>
 		<br>
@@ -111,15 +116,20 @@
 
 		function save() {
 			var current_name = document.getElementById("current-name").value;
-			if (best_name == null) {
-				SetCookie("best-name", current_name, expire);
-				SetCookie("best-score", current_score, expire);
+			if (current_name == "" || current_name == null) {
+				alert("사용자 이름을 입력해주세요!")
 			}
-			else if (parseInt(current_score) > parseInt(best_score)) {
-				SetCookie("best-name", current_name, expire);
-				SetCookie("best-score", current_score, expire);
+			else {
+				if (best_name == null) {
+					SetCookie("best-name", current_name, expire);
+					SetCookie("best-score", current_score, expire);
+				}
+				else if (parseInt(current_score) > parseInt(best_score)) {
+					SetCookie("best-name", current_name, expire);
+					SetCookie("best-score", current_score, expire);
+				}
+				window.location.href = 'game_title.html';
 			}
-			window.location.href = 'game_title.html';
 		}
 	</script>
 </body>
