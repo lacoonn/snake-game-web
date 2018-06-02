@@ -9,7 +9,8 @@
 	<style>
 		body {
 			text-align: center;
-			background-color: #5EA152;
+			background-color: limegreen;
+			padding-top: 50px;
 		}
 	</style>
 	<script>
@@ -525,15 +526,15 @@
 						if (segy < nseg.y) {
 							// Up
 							tx = 3; ty = 0;
-						} 
+						}
 						else if (segx > nseg.x) {
 							// Right
 							tx = 4; ty = 0;
-						} 
+						}
 						else if (segy > nseg.y) {
 							// Down
 							tx = 4; ty = 1;
-						} 
+						}
 						else if (segx < nseg.x) {
 							// Left
 							tx = 3; ty = 1;
@@ -546,15 +547,15 @@
 						if (pseg.y < segy) {
 							// Up
 							tx = 3; ty = 2;
-						} 
+						}
 						else if (pseg.x > segx) {
 							// Right
 							tx = 4; ty = 2;
-						} 
+						}
 						else if (pseg.y > segy) {
 							// Down
 							tx = 4; ty = 3;
-						} 
+						}
 						else if (pseg.x < segx) {
 							// Left
 							tx = 3; ty = 3;

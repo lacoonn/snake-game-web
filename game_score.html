@@ -9,7 +9,7 @@
 	<style>
 		body {
 			text-align: center;
-			background-color: #5EA152;
+			background-color: limegreen;
 		}
 
 		table {
@@ -24,6 +24,14 @@
 		td {
 			height: 50px;
 			width: 100px;
+		}
+
+		div {
+			display: inline-block;
+			border-width: 1px;
+			border-color: black;
+			border-style: solid;
+			width: 500px;
 		}
 
 		.save {
@@ -55,38 +63,47 @@
 </head>
 
 <body>
-	<br><br>
-	<form>
-		<h3>최고 기록</h3>
+	<br>
+	<div>
 		<br>
-		<table>
-			<tr>
-				<td>
-					<span id="best-name">최고득점자</span>
-				</td>
-				<td>
-					<span id="best-score">최고점수</span>
-				</td>
-			</tr>
-		</table>
-		<br>
-		<h3>내 기록</h3>
-		<br>
-		<table>
-			<tr>
-				<td>
-					<input id="current-name" type="text" size="15" value="">
-				</td>
-				<td>
-					<span id="current-score"></span>
-				</td>
-			</tr>
-		</table>
+		<form>
+			<h3>최고 기록</h3>
+			<br>
+			<table>
+				<tr>
+					<td>
+						<span id="best-name">최고득점자</span>
+					</td>
+					<td>
+						<span id="best-score">최고점수</span>
+					</td>
+				</tr>
+			</table>
+			<br>
+			<h3>내 기록</h3>
+			<br>
+			<table>
+				<tr>
+					<td>
+						<input id="current-name" type="text" size="10" value="">
+					</td>
+					<td>
+						<span id="current-score"></span>
+					</td>
+				</tr>
+			</table>
 
-		<br>
-		<br>
+			<br>
+			<br>
+		</form>
+	</div>
+
+	<br>
+	<br>
+	<form>
 		<button class="save" type="button" onclick="save()">저장</button>
 	</form>
+
 	<script>
 		var doc_best_name = document.getElementById("best-name");
 		var doc_best_score = document.getElementById("best-score");

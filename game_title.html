@@ -9,7 +9,8 @@
 	<style>
 		body {
 			text-align: center;
-			background-color: #5EA152;
+			vertical-align: middle;
+			background-color: limegreen;
 		}
 
 		table {
@@ -22,9 +23,28 @@
 			width: 100px;
 		}
 
+		div {
+			display: inline-block;
+			border-width: 1px;
+			border-color: black;
+			border-style: solid;
+			width: 300px;
+		}
+
 		.game-start {
-			height: 50px;
-			width: 100px;
+			text-align: center;
+			background-color: limegreen;
+			border: none;
+			height: 100px;
+			width: 200px;
+		}
+
+		.game-start-image {
+			height: 100px;
+			width: 200px;
+			position: relative;
+			right: 10px;
+			bottom: 10px;
 		}
 	</style>
 	<script>
@@ -49,20 +69,22 @@
 <body>
 	<img src="image/snake_game.png">
 	<h1>SNAKE GAME</h1>
+	<div>
 	<h3>최고 기록</h3>
 	<table>
 		<tr>
 			<td>
 				<span id="best-name">Game Score</span>
-
 			</td>
 			<td>
 				<span id="best-score">Game Score</span>
 			</td>
 		</tr>
 	</table>
+	</div>
 	<br>
-	<button class="game-start" type="button" onclick="location.href='game_board.html'">Start Game</button>
+	<br>
+	<button class="game-start" type="button" onclick="location.href='game_board.html'"><img class="game-start-image" src="image/play_button.png"></button>
 	<script>
 		var doc_name = document.getElementById("best-name");
 		var doc_score = document.getElementById("best-score");
