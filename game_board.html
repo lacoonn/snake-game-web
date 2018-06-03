@@ -25,6 +25,7 @@
 			}
 			return null;
 		}
+		
 		function SetCookie(name, value, expireDate) {
 			var cookieStr = name + "=" + escape(value) +
 				((expireDate == null) ? "" : ("; expires=" + expireDate.toGMTString()));
@@ -226,7 +227,7 @@
 			// 게임 초기화
 			function init() {
 				// 이미지 로드
-				images = loadImages(["snake-graphics.png"]);
+				images = loadImages(["image/snake-graphics.png"]);
 				tileimage = images[0];
 
 				// 마우스 이벤트 추가
@@ -601,17 +602,16 @@
 
 			// 점수 출력
 			function drawScore() {
-				context.fillStyle = "#000000";
+				context.fillStyle = "#ffffff";
 				context.font = "18px Verdana";
-				drawCenterText("score : " + score, canvas.width * 0.4, canvas.height * 0.05, canvas.width);
-				/*
+				drawCenterText(score, canvas.width * 0.4, canvas.height * 0.05, canvas.width);
+				
 				// 사과 이미지 출력
 				var tx = 0;
 				var ty = 3;
 				var tilew = 64;
 				var tileh = 64;
-				context.drawImage(tileimage, tx * tilew, ty * tileh, tilew, tileh, tilex, tiley, level.tilewidth, level.tileheight);
-				*/
+				context.drawImage(tileimage, tx * tilew, ty * tileh, tilew, tileh, canvas.width * 0.825, canvas.height * 0.005, level.tilewidth * 0.9, level.tileheight * 0.9);				
 			}
 
 			// 입력받은 위치의 중앙에 글자 출력

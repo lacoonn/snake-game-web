@@ -13,6 +13,12 @@
 			background-color: limegreen;
 		}
 
+		h1 {
+			font: italic normal 2.5em georgia, sans-serif;
+			letter-spacing: 1px;
+			color: black;
+		}
+
 		table {
 			margin-left: auto;
 			margin-right: auto;
@@ -25,6 +31,7 @@
 
 		div {
 			display: inline-block;
+			background-color: greenyellow;
 			border-width: 1px;
 			border-color: black;
 			border-style: solid;
@@ -70,21 +77,23 @@
 	<img src="image/snake_game.png">
 	<h1>SNAKE GAME</h1>
 	<div>
-	<h3>최고 기록</h3>
-	<table>
-		<tr>
-			<td>
-				<span id="best-name">Game Score</span>
-			</td>
-			<td>
-				<span id="best-score">Game Score</span>
-			</td>
-		</tr>
-	</table>
+		<h3>최고 기록</h3>
+		<table>
+			<tr>
+				<td>
+					<span id="best-name">Game Score</span>
+				</td>
+				<td>
+					<span id="best-score">Game Score</span>
+				</td>
+			</tr>
+		</table>
 	</div>
 	<br>
 	<br>
-	<button class="game-start" type="button" onclick="location.href='game_board.html'"><img class="game-start-image" src="image/play_button.png"></button>
+	<button class="game-start" type="button" onclick="location.href='game_board.html'">
+		<img class="game-start-image" src="image/play_button.png">
+	</button>
 	<script>
 		var doc_name = document.getElementById("best-name");
 		var doc_score = document.getElementById("best-score");
